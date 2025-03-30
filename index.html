@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>MSV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .text-area {
+            margin-bottom: 30px;
+        }
+
+        .gif-container {
+            margin: 30px 0;
+            height: 200px;
+        }
+
+            .gif-container img {
+                max-height: 100%;
+                max-width: 100%;
+                border-radius: 8px;
+            }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 30px;
+            margin: 0 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+
+        #yesBtn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-area">
+            <h1>Beni affeder misin?</h1>
+            <p>Seni çok seviyorum bebeğim. Çok özür dilerim. Beni affeder misin ?</p>
+        </div>
+
+        <div class="gif-container">
+            <img src="https://www.icegif.com/wp-content/uploads/2023/10/icegif-79.gif" alt="Hareketli GIF">
+        </div>
+
+        <div class="buttons">
+            <button id="yesBtn">Evet</button>
+            <button id="noBtn">Hayır</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        // Hayır butonuna fare gelince kaçma efekti
+        noBtn.addEventListener('mouseover', function() {
+            // Rastgele pozisyon üret
+            const x = Math.random() * (window.innerWidth - this.offsetWidth) - 50;
+            const y = Math.random() * (window.innerHeight - this.offsetHeight) - 50;
+
+            // Butonu hareket ettir
+            this.style.transform = `translate(${x}px, ${y}px)`;
+            this.style.transition = 'transform 0.1s ease';
+        });
+
+        // Hayır butonunun tıklanmasını engelle
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Hayır butonuna tıklayamazsınız!');
+        });
+
+        // Evet butonu tıklanınca yönlendirme
+        yesBtn.addEventListener('click', function() {
+            // Yeni sayfa içeriği
+            const newPageContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Teşekkürler!</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            text-align: center;
+                            background-color: #f5f5f5;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        .container {
+                            max-width: 800px;
+                            margin: 50px auto;
+                            background-color: white;
+                            padding: 30px;
+                            border-radius: 10px;
+                            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                        }
+                        .gif-container {
+                            margin: 30px 0;
+                            height: 200px;
+                        }
+                        .gif-container img {
+                            max-height: 100%;
+                            max-width: 100%;
+                            border-radius: 8px;
+                        }
+                        h1 {
+                            color: #4CAF50;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>Yuppiii!</h1>
+                        <p>Evet diyeceğini biliyordum. İyi ki varsın güzelimmmm <3<3</p>
+
+                        <div class="gif-container">
+                            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDMxM2Z4czBsZ3d1azFzYjJyZXVhM3FzOXJpNGFqa2lvY3R0c29mMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/beorHuw3tM7tcAFB0v/giphy.gif" alt="Teşekkür GIF">
+                        </div>
+
+                        <p>Çok tatlı gülüyosun btw.</p>
+                    </div>
+                </body>
+                </html>
+            `;
+
+            // Yeni bir sayfa aç ve içeriği yükle
+            const newWindow = window.open();
+            newWindow.document.open();
+            newWindow.document.write(newPageContent);
+            newWindow.document.close();
+        });
+    </script>
+</body>
+</html>
